@@ -68,7 +68,8 @@ get_shop_list_by_dishes(['Фахитос', 'Омлет'], 2)
 
 
 def createfile(filename):
-    with (open('1.txt', 'r+', encoding='utf-8') as file1, open('2.txt', 'r+', encoding='utf-8') as file2,
+    with (open('1.txt', 'r+', encoding='utf-8') as file1,
+          open('2.txt', 'r+', encoding='utf-8') as file2,
           open('3.txt', 'r+', encoding='utf-8') as file3):
         dlina1 = len(file1.readlines())
         dlina2 = len(file2.readlines())
@@ -76,7 +77,8 @@ def createfile(filename):
         file1.seek(0)
         file2.seek(0)
         file3.seek(0)
-        spisok = [(file1.name, dlina1, file1.readlines()), (file2.name, dlina2, file2.readlines()),
+        spisok = [(file1.name, dlina1, file1.readlines()),
+                  (file2.name, dlina2, file2.readlines()),
                   (file3.name, dlina3, file3.readlines())]
         spisoksort = sorted(spisok, key=lambda x: x[1])
         with open(filename, 'w+', encoding='utf-8') as itogfile:
@@ -89,5 +91,6 @@ def createfile(filename):
                 if i != 2 and ''.join(spisoksort[i][2])[-1] != '\n':
                     itogfile.write('\n')
     return print(f'Файл {filename} успешно создан')
+
 
 createfile('result.txt')
